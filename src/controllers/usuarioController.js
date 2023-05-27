@@ -4,7 +4,7 @@ const usuarioModel = require('../models/usuarioModel');
 exports.entrar=async(nick)=>{
     let resp = await usuarioModel.registrarUsuario(nick);
     if(resp.insertedId){
-        return{"IdUser":resp.insertedId,
+        return{"_id":resp.insertedId,
         "token":await token.setToken(JSON.stringify(resp.insertedId).replace(/"/g,''),nick),
         "nick":nick}
     }
